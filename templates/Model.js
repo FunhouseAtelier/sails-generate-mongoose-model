@@ -13,6 +13,7 @@
  * module definitions
  * @const {object} OID - a convenient reference to the Mongoose ObjectId data type
  */
+
 const OID = sails.mongoose.Schema.Types.ObjectId;
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
    * @type {Dictionary}
    * @docs https://mongoosejs.com/docs/guide.html#definition
    */
+
   schema: {
 
   },
@@ -35,6 +37,7 @@ module.exports = {
    * @param  {SailsApp} sails                 [just in case you have globals disabled, this way you always have access to `sails`]
    * @return {MongooseSchema}
    */
+
   constructSchema: function (schemaDefinedAbove, sails) {
 
     /**
@@ -58,6 +61,7 @@ module.exports = {
      *  not for production, so the generator sets this to check which environment Sails
      *  is running in and enable or disable auto-indexing accordingly.
      */
+
     let schemaOptions = {
       collection: '<%= modelName %>',
       timestamps: {
@@ -76,19 +80,41 @@ module.exports = {
      * models that may be populated when Mongoose performs a database query.
      * @docs https://mongoosejs.com/docs/guide.html#virtuals
      */
-    newSchema.virtual('createdAt').get(function() {
-      return this.created_at.valueOf();
-    });
 
-    newSchema.virtual('updatedAt').get(function() {
-      return this.updated_at.valueOf();
-    });
+    newSchema.virtual('createdAt').get(function () { return this.created_at.valueOf() });
+    newSchema.virtual('updatedAt').get(function () { return this.updated_at.valueOf() });
+
+    // // Virtual setter example:
+    // newSchema.virtual('fullname').set(function(value, virtual, doc) {
+    //   const parts = value.split(' ');
+    //   this.name.first = parts[0];
+    //   this.name.last = parts[1];
+    // });
+
+    // // Virtual reference example: 
+    // newSchema.virtual('members', {
+    //   ref: 'Person', // The model to use
+    //   localField: 'name', // Find people where `localField`
+    //   foreignField: 'band', // is equal to `foreignField`
+    //   // Additional match conditions; can be overridden in the query populate logic.
+    //   match: { isActive: true },
+    //   // If `count` is true, 'members' will be a numeric value that represents how many
+    //   // documents met all match conditions of the virtual reference. `count` is false
+    //   // by default.
+    //   count: false,
+    //   // If `justOne` is true, 'members' will be a single doc as opposed to
+    //   // an array. `justOne` is false by default.
+    //   justOne: false,
+    //   // Query options; can be overrideen in the query logic.
+    //   options: { sort: { name: -1 }, limit: 5 },
+    // });
 
     /**
      * Document instance methods can be defined below. 
      * @docs https://mongoosejs.com/docs/guide.html#methods
      */
-    // // Example:
+
+    // // Document instance method example:
     // newSchema.method('meow', function () {
     //   console.log('meeeeeoooooooooooow');
     // });
@@ -97,7 +123,8 @@ module.exports = {
      * Model static methods can be defined below.
      * @docs https://mongoosejs.com/docs/guide.html#statics
      */
-    // // Example:
+
+    // // Model static method example:
     // newSchema.static('findByName', function (name, callback) {
     //   return this.find({ name: name }, callback);
     // });
@@ -106,7 +133,8 @@ module.exports = {
      * Schema plugins can be defined below.
      * @docs https://mongoosejs.com/docs/plugins.html
      */
-    // // Example: (must first be installed via NPM)
+
+    // // Schema plugin example: (must first be installed via NPM)
     // newSchema.plugin(require('mongoose-lean-virtuals'));
 
     // Finally, the instantiated Schema instance is returned.
