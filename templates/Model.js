@@ -81,8 +81,8 @@ module.exports = {
      * @docs https://mongoosejs.com/docs/guide.html#virtuals
      */
 
-    newSchema.virtual('createdAt').get(function () { return this.created_at.valueOf() });
-    newSchema.virtual('updatedAt').get(function () { return this.updated_at.valueOf() });
+    newSchema.virtual('createdAt').get(function() { return this.created_at.valueOf() });
+    newSchema.virtual('updatedAt').get(function() { return this.updated_at.valueOf() });
 
     // // Virtual setter example:
     // newSchema.virtual('fullname').set(function(value, virtual, doc) {

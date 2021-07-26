@@ -62,7 +62,7 @@ module.exports = {
     
     // Attach all data needed to generate the file to the global "scope" variable
     scope.modelName       = firstArg.toLowerCase();
-    scope.modelProperName = scope.modelName[0].toUppercase() + scope.modelName.slice(1);
+    scope.modelProperName = scope.modelName[0].toUpperCase() + scope.modelName.slice(1);
     scope.modelFileName   = `${scope.modelProperName}.js`;
     
     // Finished with no errors
@@ -89,7 +89,7 @@ module.exports = {
   after: function (scope, done) {
 
     // Log success message to console
-    console.log(`A new Mongoose model named <${scope.modelProperName}> was created.`);
+    console.log(`A new Mongoose model named ${scope.modelProperName} was created.`);
 
     // Finished
     return done();
