@@ -1,20 +1,11 @@
-# @funhouse-atelier/sails-generate-vue-component
+# sails-generate-mongoose-model
 
-A `vue-component` generator for use with the Sails command-line interface.
-
-This is a modified version of the `@acidev/sails-generate-vue-component` package. The original package can be found [here on GitHub](https://github.com/AciDev/sails-generate-vue-component) and [here on NPM](https://www.npmjs.com/package/@acidev/sails-generate-vue-component).
-
-The following functional changes were made:
-* lodash dependency removed
-* component name and folder path are no longer forced to lower case
-* a corresponding LESS file is generated along with the JS file
-* changed "props" in template from array-type definition to object-type
-* added "watch" to template
+A Mongoose data model generator for use with the Sails command-line interface.
 
 ## Installation
 
 ```sh
-$ npm install @funhouse-atelier/sails-generate-vue-component --save
+$ npm install sails-generate-mongoose-model
 ```
 
 Then merge the following into your `.sailsrc` file:
@@ -22,12 +13,12 @@ Then merge the following into your `.sailsrc` file:
 ```json
 {
   "modules": {
-    "vue-component": "@funhouse-atelier/sails-generate-vue-component"
+    "mongoose-model": "sails-generate-mongoose-model"
   }
 }
 ```
 
-> Note that instead of `"@funhouse-atelier/sails-generate-vue-component"`, you can also choose to provide the path to the generator locally (e.g. "./generators/vue-component").
+> Note that instead of `"sails-generate-mongoose-model"`, you can also choose to provide the path to the generator locally (e.g. "./generators/mongoose-model").
 > This is useful if, for example, you have specific best practices for particular projects or teams within your organization, and you want to be able to check in generators to your code repository.
 >
 > Certain generators are installed by default in Sails, but they can be overridden.  Other generators add support for generating entirely new kinds of things.
@@ -36,7 +27,7 @@ Then merge the following into your `.sailsrc` file:
 ## Usage
 
 ```bash
-$ sails generate vue-component <new-component-name>
+$ sails generate mongoose-model <new-model-name>
 ```
 
 ## Need help?
@@ -51,7 +42,7 @@ Please observe the guidelines and conventions laid out in the [Sails project con
 
 ## License
 
-This vue-component generator is available under the **MIT license**.
+This Mongoose data model generator is available under the **MIT license**.
 
 The [Sails framework](https://sailsjs.com) is free and open-source under the [MIT License](https://sailsjs.com/license).
 
