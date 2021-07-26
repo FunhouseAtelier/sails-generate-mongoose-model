@@ -27,7 +27,7 @@ Then merge the following into your `.sailsrc` file:
 ## Usage
 
 ```bash
-$ sails generate mongoose-model <new-model-name>
+$ sails generate mongoose-model <NewModelName>
 ```
 
 ## Need help?
