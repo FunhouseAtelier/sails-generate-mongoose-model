@@ -36,7 +36,7 @@ module.exports = {
     const example = 
       `To create a new Mongoose model, use the following syntax:
       
-      sails generate mongoose-model <new-model-name>`
+      sails generate mongoose-model <NewModelName>`
     ;
     
     // If there is no first argument, finish with an error message
