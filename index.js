@@ -36,7 +36,7 @@ module.exports = {
     const firstArg = scope.args[0];
     
     // Define an example of the CLI syntax, to be displayed if the generation fails.
-    const example = '\n\nTo create a new Mongoose model, use the following syntax:\n\nsails generate mongoose-model <NewModelName>';
+    const example = '\n\nTo create a new Mongoose model, use the following syntax:\n\nsails generate mongoose-model <NewModelName>\n';
     
     // If there is no first argument, exit with an error message.
     if (typeof firstArg === 'undefined') {
