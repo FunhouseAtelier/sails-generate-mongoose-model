@@ -30,6 +30,10 @@ Then merge the following into your `.sailsrc` file:
 $ sails generate mongoose-model <NewModelName>
 ```
 
+## Related projects
+
+To use Mongoose in Sails.js you will need to override the default ORM hook for Waterline. See the [sails-hook-orm-mongoose](https://github.com/FunhouseAtelier/sails-hook-orm-mongoose) repository for code and instructions that will help you do it.
+
 ## Need help?
 
 See [Extending Sails > Generators > Custom Generators](https://sailsjs.com/docs/concepts/extending-sails/generators/custom-generators) in the [Sails documentation](https://sailsjs.com/documentation), or check out [recommended support options](https://sailsjs.com/support).
