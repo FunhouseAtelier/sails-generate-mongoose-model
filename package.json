@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-mongoose-model",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generates a Mongoose data model for use in Sails.js",
   "main": "index.js",
   "scripts": {

@@ -28,7 +28,7 @@ module.exports = {
    */
 
   schema: {
-
+    //…
   },
 
   /**
@@ -90,11 +90,11 @@ module.exports = {
      */
 
     newSchema.virtual('createdAt').get(function() {
-      return this.created_at.valueOf();
+      return this.created_at ? this.created_at.valueOf() : undefined;
     });
 
     newSchema.virtual('updatedAt').get(function() {
-      return this.updated_at.valueOf();
+      return this.updated_at ? this.updated_at.valueOf() : undefined;
     });
 
     /**
