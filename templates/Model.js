@@ -18,6 +18,12 @@
 
 const OID = sails.mongoose.Schema.Types.ObjectId;
 
+/**
+ * Module exports
+ * 
+ * @return {Dictionary}
+ */
+
 module.exports = {
 
   /**
@@ -37,9 +43,9 @@ module.exports = {
    * Note that this function must be synchronous!
    *
    * @param  {Dictionary} schemaDefinedAbove
-   *  the raw schema defined above, or `{}` if no schema was provided
+   * the raw schema defined above, or `{}` if no schema was provided
    * @param  {SailsApp}   sails
-   *  just in case you have globals disabled, this way you always have access to `sails`
+   * just in case you have globals disabled, this way you always have access to "sails"
    * @return {MongooseSchema}
    */
 
@@ -56,12 +62,8 @@ module.exports = {
      *  pluralization by Mongoose, and to match the behavior of Waterline.
      * @property {Boolean|Dictionary} timestamps
      *  Detemines how Mongoose handles automatic generation and storage of timestamps
-     *  for when a document was created or last updated. The generator sets this to
-     *  change the default field names to "created_at" and "updated_at", so javascript
-     *  Date objects, which are more human-readable than Unix epoch timestamps, are
-     *  stored in the database, while the virtual getters below, "createdAt" and
-     *  "updatedAt", can be used to convert them to numeric format, for ease of use in
-     *  Javascript code.
+     *  for when a document was created or last updated. The generator sets this to 
+     *  "true" so automatic timestamps will be enabled.
      * @property {Boolean}            autoIndex
      *  Determines whether Mongoose rebuilds the database indexes when it initially
      *  connects to the database. Rebuilding the indexes is suitable for development, but
@@ -71,14 +73,11 @@ module.exports = {
 
     let schemaOptions = {
       collection: '<%= modelName %>',
-      timestamps: {
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-      },
+      timestamps: true,
       autoIndex: sails.config.environment === 'development' ? true : false,
     }
 
-    //  The schema defintion and options are passed to the schema constructor.
+    /*  The schema defintion and options are passed to the schema constructor. */
     let newSchema = new sails.mongoose.Schema(schemaDefinedAbove, schemaOptions);
 
     /**
@@ -89,13 +88,14 @@ module.exports = {
      * @docs https://mongoosejs.com/docs/guide.html#virtuals
      */
 
-    newSchema.virtual('createdAt').get(function() {
-      return this.created_at ? this.created_at.valueOf() : undefined;
-    });
+    /* These virtual getter examples can be used to convert the datetime objects automatically stored in the "createdAt" and "updatedAt" properties into a numerical format, representing the number of milliseconds elapsed since the Unix epoch. */
 
-    newSchema.virtual('updatedAt').get(function() {
-      return this.updated_at ? this.updated_at.valueOf() : undefined;
-    });
+    // newSchema.virtual('createdAtValue').get(function() {
+    //   return this.createdAt?.valueOf();
+    // });
+    // newSchema.virtual('updatedAtValue').get(function() {
+    //   return this.updatedAt?.valueOf();
+    // });
 
     /**
      * document instance methods
@@ -103,8 +103,8 @@ module.exports = {
      * @docs https://mongoosejs.com/docs/guide.html#methods
      */
 
-    // // Document instance method example:
-    //
+    /* This document instance method example will add a "meow" method to each Mongoose document based on this data model, which will output text to the console. */
+
     // newSchema.method('meow', function () {
     //   console.log('meeeeeoooooooooooow');
     // });
@@ -115,10 +115,10 @@ module.exports = {
      * @docs https://mongoosejs.com/docs/guide.html#statics
      */
 
-    // // Model static method example:
-    //
-    // newSchema.static('findByName', function (name, callback) {
-    //   return this.find({ name: name }, callback);
+    /* This model static method example will add a "findByName" method to the global data model that will find all documents with a matching "name". */
+
+    // newSchema.static('findByName', function (name) {
+    //   return this.find({ name: name });
     // });
 
     /**
@@ -127,11 +127,11 @@ module.exports = {
      * @docs https://mongoosejs.com/docs/plugins.html
      */
 
-    // // Schema plugin example (must first be installed via NPM):
-    //
+    /* This schema plugin example with allow virtuals to be included in the plain Javascript objects returned when the "lean" option is used to query the database. Note that plugins must first be installed, such as with NPM, before they can be enabled in any schema. */
+    
     // newSchema.plugin(require('mongoose-lean-virtuals'));
 
-    // Finally, the instantiated Schema instance is returned.
+    /* Finally, the instantiated Schema instance is returned. */
     return newSchema;
   },
 };
